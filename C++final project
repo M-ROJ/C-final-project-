@@ -1,0 +1,53 @@
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    const int NUM_DAYS = 7;
+    int temperatures[NUM_DAYS];
+    string conditions[NUM_DAYS];
+
+    // Get input for each day's temperature and condition
+    for (int i = 0; i < NUM_DAYS; i++) {
+        cout << "Enter the temperature for day " << i+1 << ": ";
+        cin >> temperatures[i];
+        cout << "Enter the weather condition for day " << i+1 << " (sunny, cloudy, rainy, snowy): ";
+        cin >> conditions[i];
+    }
+
+    // Display the weather report for the week
+    cout << "\nThis week's weather report:\n";
+    for (int i = 0; i < NUM_DAYS; i++) {
+        cout << "Day " << i+1 << ": ";
+        cout << "Temperature: " << temperatures[i] << " degrees Celsius, ";
+        cout << "Condition: " << conditions[i] << endl;
+    }
+
+    // Determine the average temperature for the week
+    int total_temperature = 0;
+    for (int i = 0; i < NUM_DAYS; i++) {
+        total_temperature += temperatures[i];
+    }
+    double avg_temperature = (double) total_temperature / NUM_DAYS;
+
+    // Display the average temperature and a suggestion based on the temperature
+    cout << "\nAverage temperature for the week: " << avg_temperature << " degrees Celsius\n";
+    if (avg_temperature < 10) {
+        cout << "It's very cold🥶\n";
+    }
+    else if (avg_temperature >= 10 && avg_temperature < 20) {
+        cout << "It's chill rainy🌧️.\n";
+    }
+    else if (avg_temperature >= 20 && avg_temperature < 30) {
+        cout << "It's cloudy!☁️\n";
+    }
+    else if (avg_temperature >= 30 && avg_temperature < 40) {
+        cout << "It's sunny⛅\n";
+    }
+    else {
+        cout << "It's scorching hot☀️.\n";
+    }
+
+    return 0;
+}
